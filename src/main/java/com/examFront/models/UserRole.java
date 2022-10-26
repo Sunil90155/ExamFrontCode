@@ -3,13 +3,14 @@ package com.examFront.models;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name="userrole")
 public class UserRole {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userRoleId;
+
     //user
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
@@ -20,11 +21,8 @@ public class UserRole {
     public UserRole() {
     }
 
-
-    public UserRole(Long userRoleId, User user, Role role) {
+    public UserRole(Long userRoleId) {
         this.userRoleId = userRoleId;
-        this.user = user;
-        this.role = role;
     }
 
     public Long getUserRoleId() {
@@ -50,8 +48,4 @@ public class UserRole {
     public void setRole(Role role) {
         this.role = role;
     }
-
-
-
-
 }
